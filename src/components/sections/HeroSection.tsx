@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Button from '../ui/Button';
+import StoryDemo from '../ui/StoryDemo';
 
 const HeroSection = () => {
   const scrollToLibrary = () => {
@@ -180,7 +181,7 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Modern Interactive Demo */}
+          {/* Story Demo Section */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -189,149 +190,9 @@ const HeroSection = () => {
               ease: "easeOut",
               delay: 0.5
             }}
-            className="relative"
-            onHoverStart={() => setIsNarratorHovered(true)}
-            onHoverEnd={() => setIsNarratorHovered(false)}
+            className="relative w-full max-w-2xl mx-auto"
           >
-            {/* Main demo card */}
-            <motion.div 
-              className="relative w-full max-w-md mx-auto"
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Background glow */}
-              <div className="absolute -inset-4 bg-gradient-modern-rainbow opacity-20 blur-2xl rounded-3xl"></div>
-              
-              {/* Main card */}
-              <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-modern-xl border border-white/20 p-8 overflow-hidden">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-modern-primary rounded-2xl flex items-center justify-center shadow-modern">
-                      <span className="text-white font-bold text-lg">AI</span>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-neutral-900">Story Assistant</h3>
-                      <p className="text-sm text-neutral-500">Personalizing your tale...</p>
-                    </div>
-                  </div>
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-3 h-3 bg-success rounded-full"
-                  />
-                </div>
-
-                {/* Demo content */}
-                <div className="space-y-4">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="bg-neutral-50 rounded-2xl p-4"
-                  >
-                    <p className="text-sm text-neutral-700">
-                      "Once upon a time, in a world where stories came alive..."
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.2 }}
-                    className="bg-gradient-modern-primary text-white rounded-2xl p-4 ml-8"
-                  >
-                    <p className="text-sm">
-                      "Tell me about dragons and magic! 🐉✨"
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.6 }}
-                    className="bg-neutral-50 rounded-2xl p-4"
-                  >
-                    <p className="text-sm text-neutral-700">
-                      "Ah, a tale of ancient dragons it shall be! Let me weave you a story of Ember, the last dragon keeper..."
-                    </p>
-                  </motion.div>
-                </div>
-
-                {/* Interactive elements */}
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-neutral-100">
-                  <div className="flex gap-2">
-                    {['🎭', '📚', '🎨', '🎵'].map((emoji, i) => (
-                      <motion.button
-                        key={i}
-                        whileHover={{ scale: 1.2, rotate: 10 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="w-8 h-8 bg-neutral-100 rounded-full flex items-center justify-center text-sm hover:bg-neutral-200 transition-colors"
-                      >
-                        {emoji}
-                      </motion.button>
-                    ))}
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="text-xs font-medium text-primary-600 hover:text-primary-700 transition-colors"
-                  >
-                    Try it now →
-                  </motion.button>
-                </div>
-              </div>
-
-              {/* Floating elements */}
-              <motion.div
-                animate={{ 
-                  y: [-10, 10, -10],
-                  rotate: [0, 5, 0, -5, 0],
-                }}
-                transition={{ 
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-accent-purple to-accent-pink rounded-2xl shadow-modern-lg flex items-center justify-center"
-              >
-                <span className="text-white text-lg">✨</span>
-              </motion.div>
-              
-              <motion.div
-                animate={{ 
-                  y: [10, -10, 10],
-                  x: [-5, 5, -5],
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-                className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-r from-accent-blue to-accent-green rounded-xl shadow-modern flex items-center justify-center"
-              >
-                <span className="text-white text-sm">🎯</span>
-              </motion.div>
-
-              {/* Additional floating elements on hover */}
-              {isNarratorHovered && (
-                <>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    className="absolute top-1/4 -left-8 w-6 h-6 bg-gradient-to-r from-accent-pink to-primary-400 rounded-full shadow-modern"
-                  />
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    className="absolute bottom-1/4 -right-8 w-6 h-6 bg-gradient-to-r from-accent-green to-accent-blue rounded-full shadow-modern"
-                  />
-                </>
-              )}
-            </motion.div>
+            <StoryDemo />
           </motion.div>
         </div>
       </div>
