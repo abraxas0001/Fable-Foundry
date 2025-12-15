@@ -33,45 +33,48 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-parchment/95 backdrop-blur-sm border-b border-amber/20 sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="bg-white/80 backdrop-blur-xl border-b border-neutral-200/50 sticky top-0 z-50 shadow-modern-sm">
+      <nav className="container-modern">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-amber rounded-lg flex items-center justify-center">
+          {/* Modern Logo */}
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 bg-gradient-modern-primary rounded-2xl flex items-center justify-center shadow-modern group-hover:shadow-modern-md transition-all duration-300 group-hover:scale-105">
               <span className="text-white font-bold text-lg">F</span>
             </div>
-            <span className="text-heading text-xl font-bold">FableFoundry</span>
+            <span className="font-['Space_Grotesk'] text-xl font-bold text-neutral-900 group-hover:text-gradient-modern transition-all duration-300">
+              FableFoundry
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Modern Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-body hover:text-amber transition-colors duration-250 focus-ring rounded-md px-2 py-1"
+                className="text-neutral-600 hover:text-neutral-900 font-medium px-4 py-2 rounded-xl hover:bg-neutral-100 transition-all duration-200 focus-modern relative group"
               >
                 {item.name}
+                <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-modern-primary group-hover:w-8 group-hover:left-1/2 group-hover:-translate-x-1/2 transition-all duration-300"></span>
               </Link>
             ))}
             {loading ? (
-              <div className="w-8 h-8 border-2 border-amber border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-2 border-primary-200 border-t-primary-500 rounded-full animate-spin" />
             ) : user ? (
               <Menu as="div" className="relative">
-                <Menu.Button className="flex items-center gap-2 p-2 rounded-lg hover:bg-amber/10 transition-colors">
-                  <div className="w-8 h-8 bg-amber rounded-full flex items-center justify-center">
+                <Menu.Button className="flex items-center gap-3 p-2 rounded-xl hover:bg-neutral-100 transition-all duration-200 group">
+                  <div className="w-9 h-9 bg-gradient-modern-primary rounded-xl flex items-center justify-center shadow-modern group-hover:shadow-modern-md transition-all duration-200">
                     {userProfile?.communityProfile.avatar ? (
                       <img
                         src={userProfile.communityProfile.avatar}
                         alt="Profile"
-                        className="w-full h-full rounded-full object-cover"
+                        className="w-full h-full rounded-xl object-cover"
                       />
                     ) : (
                       <UserIcon className="w-5 h-5 text-white" />
                     )}
                   </div>
-                  <span className="text-sm font-medium text-charcoal">
+                  <span className="text-sm font-semibold text-neutral-700 group-hover:text-neutral-900 transition-colors">
                     {userProfile?.communityProfile.displayName || 'User'}
                   </span>
                 </Menu.Button>
@@ -85,38 +88,50 @@ const Header = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                  <Menu.Items className="absolute right-0 mt-3 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-modern-lg border border-neutral-200/50 focus:outline-none z-10 overflow-hidden">
                     <div className="p-2">
                       <Menu.Item>
                         <Link
                           href="/dashboard"
-                          className="block px-3 py-2 text-sm text-charcoal hover:bg-amber/10 rounded-lg transition-colors"
+                          className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 rounded-xl transition-all duration-200"
                         >
+                          <div className="w-8 h-8 bg-gradient-to-r from-accent-blue to-accent-purple rounded-lg flex items-center justify-center">
+                            <span className="text-white text-xs">📊</span>
+                          </div>
                           Dashboard
                         </Link>
                       </Menu.Item>
                       <Menu.Item>
                         <Link
                           href="/bookmarks"
-                          className="block px-3 py-2 text-sm text-charcoal hover:bg-amber/10 rounded-lg transition-colors"
+                          className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 rounded-xl transition-all duration-200"
                         >
+                          <div className="w-8 h-8 bg-gradient-to-r from-accent-pink to-primary-500 rounded-lg flex items-center justify-center">
+                            <span className="text-white text-xs">❤️</span>
+                          </div>
                           Bookmarks
                         </Link>
                       </Menu.Item>
                       <Menu.Item>
                         <Link
                           href="/settings"
-                          className="block px-3 py-2 text-sm text-charcoal hover:bg-amber/10 rounded-lg transition-colors"
+                          className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 rounded-xl transition-all duration-200"
                         >
+                          <div className="w-8 h-8 bg-gradient-to-r from-accent-green to-accent-blue rounded-lg flex items-center justify-center">
+                            <span className="text-white text-xs">⚙️</span>
+                          </div>
                           Settings
                         </Link>
                       </Menu.Item>
-                      <div className="border-t border-amber/20 my-2" />
+                      <div className="border-t border-neutral-200 my-2" />
                       <Menu.Item>
                         <button
                           onClick={handleSignOut}
-                          className="block w-full text-left px-3 py-2 text-sm text-charcoal hover:bg-amber/10 rounded-lg transition-colors"
+                          className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-neutral-700 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all duration-200"
                         >
+                          <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-red-500 rounded-lg flex items-center justify-center">
+                            <span className="text-white text-xs">👋</span>
+                          </div>
                           Sign Out
                         </button>
                       </Menu.Item>
@@ -125,30 +140,28 @@ const Header = () => {
                 </Transition>
               </Menu>
             ) : (
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="secondary"
-                  size="sm"
+              <div className="flex items-center gap-3">
+                <button
                   onClick={() => openAuthModal('signin')}
+                  className="text-neutral-600 hover:text-neutral-900 font-medium px-4 py-2 rounded-xl hover:bg-neutral-100 transition-all duration-200"
                 >
                   Sign In
-                </Button>
-                <Button
-                  variant="primary"
-                  size="sm"
+                </button>
+                <button
                   onClick={() => openAuthModal('signup')}
+                  className="btn-modern-primary text-sm px-6 py-2.5"
                 >
-                  Sign Up
-                </Button>
+                  Get Started
+                </button>
               </div>
             )}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Modern Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-charcoal hover:text-amber focus-ring p-2 rounded-md"
+              className="text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 p-2.5 rounded-xl transition-all duration-200 focus-modern"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (

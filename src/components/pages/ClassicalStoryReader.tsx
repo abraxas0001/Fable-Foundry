@@ -204,7 +204,13 @@ const ClassicalStoryReader = ({ story }: ClassicalStoryReaderProps) => {
               className="lg:col-span-1"
             >
               <div className="sticky top-8">
-                <NarratorPanel narrator={story.narrator} />
+                <NarratorPanel 
+                  narrator={story.narrator} 
+                  story={story}
+                  isVisible={true}
+                  isAudioPlaying={false}
+                  onToggleAudio={() => {}}
+                />
               </div>
             </motion.div>
           )}
